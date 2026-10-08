@@ -1,17 +1,14 @@
 """
 Stage 2: test the CAPM.
 
-Run from the project folder:
-    python src/stage2_capm.py
-
-Reads  data/clean/stock_returns.csv and data/clean/factors.csv
 Writes output/tables/tab_2a_capm.csv      (beta, alpha, t(alpha), R2 for 25 stocks)
        output/tables/tab_2c_alpha_tests.csv (|t|>2 count, GRS test)
        output/tables/tab_2d_sml.csv        (fitted vs theoretical SML)
        output/figures/fig_2b_sml.png       (empirical SML scatter)
 
-Reusable by E (Stage 4): call run_capm(stocks, mkt_excess, rf) with any market
-excess-return series, e.g. msci_world - rf.
+Note for D (Stage 3): alphas before factors are in output/tables/tab_2a_capm.csv, column 'alpha' (monthly decimals). Compare against these.
+
+Note for E (Stage 4): reuse run_capm(stocks, mkt_excess, rf) from src/stage2_capm.py. For MSCI World pass mkt_excess = factors['msci_world'] - factors['rf']."
 """
 import numpy as np
 import pandas as pd

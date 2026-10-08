@@ -3,7 +3,7 @@
 How every file in `data/clean/` was built from `data/raw/`, and every cleaning decision we made.
 All steps are coded in `src/data_prep.py`; settings are in `src/config.py`.
 
-Owner: A. Last updated: 8 October 2026.
+Owner: Weekey. Last updated: 8 October 2026.
 
 ---
 
@@ -11,9 +11,9 @@ Owner: A. Last updated: 8 October 2026.
 
 | Item | Choice |
 |---|---|
-| Universe | 25 large-cap U.S. stocks from the S&P 500, 2 to 3 per sector, all 11 GICS sectors |
+| Universe | 25 large-cap U.S. stocks from the S&P 500, 1 to 3 per sector, all 11 GICS sectors |
 | Frequency | Monthly |
-| Sample | September 2016 to July 2026, **119 months** (handout minimum: 96) |
+| Sample | September 2016 to July 2026, **119 months**  |
 | Returns | Simple total returns (dividends and splits included), in decimals |
 | Riskless rate | 1-month U.S. Treasury bill rate (`RF`, Ken French) |
 | Main market proxy | U.S. value-weighted market excess return (`Mkt-RF`, Ken French) |

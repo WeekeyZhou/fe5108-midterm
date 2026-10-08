@@ -14,7 +14,7 @@ Only edit the files next to your letter.
 ```
 fe5108-midterm/
 ├── README.md                    # A   how to run, data files, package versions
-├── requirements.txt             # A   package versions
+├── requirements.txt             # A√   package versions
 ├── run_all.py                   # A   single entry point: runs every script below in order
 │
 ├── Read it before you do!/      # everyone reads, nobody edits
@@ -22,12 +22,12 @@ fe5108-midterm/
 │   └── FE5108_Midterm_Who_Does_What.pdf
 │
 ├── data/
-│   ├── raw/                     # A   raw CSVs, downloaded once, never edited
-│   └── clean/                   # A   the one shared monthly-returns file
+│   ├── raw/                     # A√   raw CSVs, downloaded once, never edited
+│   └── clean/                   # A√   the one shared monthly-returns file
 │
 ├── src/
-│   ├── config.py                # A   shared settings: sample period, tickers, paths, plot style
-│   ├── data_prep.py             # A   download and clean the data
+│   ├── config.py                # A√   shared settings: sample period, tickers, paths, plot style
+│   ├── data_prep.py             # A√   download and clean the data
 │   ├── stage1_portfolio.py      # B   Stage 1: tangency vs value weights
 │   ├── stage2_capm.py           # C   Stage 2: CAPM regressions and the SML
 │   ├── stage3_factors.py        # D   Stage 3: add size / value / momentum factors

@@ -1,0 +1,13 @@
+,value
+fitted_intercept_m,-0.0026166266592653918
+fitted_intercept_se,0.002698332865493833
+fitted_slope_m,0.019664446345475185
+fitted_slope_se,0.0030314687391147102
+theory_intercept_m,0.0
+theory_slope_m,0.010851260504201678
+fitted_intercept_ann,-0.0313995199111847
+fitted_slope_ann,0.23597335614570222
+theory_slope_ann,0.13021512605042013
+cs_r2,0.6465790939629794
+t_slope_vs_theory,2.907232961883437
+t_intercept_vs_zero,-0.9697197453756365

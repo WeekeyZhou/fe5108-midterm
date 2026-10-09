@@ -1,86 +1,86 @@
 
-"""Stage 4: Roll's critique — alternative market proxy.
+"""Stage 4: Roll's Critique — Market Proxy Robustness.
 
 Owner: E
-Compare CAPM estimates using the Ken French US market
-factor and MSCI World (proxied by URTH).
+
+Compare CAPM results using:
+1. Ken French U.S. market excess return
+2. MSCI World (URTH) excess return
+
+Reuses Stage 2's CAPM regression function.
 """
 
-import numpy as np
 import pandas as pd
-import statsmodels.api as sm
 
 from config import (
-    TICKERS,
     STOCK_RETURNS,
     FACTORS,
     TAB_DIR,
 )
 
-
-def run_capm(y, market_excess):
-    """Estimate CAPM using OLS with an intercept."""
-    X = sm.add_constant(market_excess, has_constant="add")
-    model = sm.OLS(y, X).fit()
-
-    return {
-        "alpha": model.params.iloc[0],
-        "beta": model.params.iloc[1],
-        "alpha_t": model.tvalues.iloc[0],
-        "r_squared": model.rsquared,
-    }
+from stage2_capm import run_capm
 
 
 def main():
     TAB_DIR.mkdir(parents=True, exist_ok=True)
 
-    stocks = pd.read_csv(STOCK_RETURNS).set_index("date")
-    factors = pd.read_csv(FACTORS).set_index("date")
+    # Read the same cleaned data as Stage 2.
+    stocks = pd.read_csv(
+        STOCK_RETURNS, index_col="date"
+    )
+    factors = pd.read_csv(
+        FACTORS, index_col="date"
+    )
 
-    # Align observations by month.
-    data = stocks.join(factors, how="inner")
+    assert list(stocks.index) == list(factors.index), (
+        "Stock and factor dates do not match."
+    )
 
-    if len(data) != 119:
-        raise ValueError(
-            f"Expected 119 months, found {len(data)}"
-        )
+    # Stage 2: U.S. market proxy
+    us_table, _ = run_capm(
+        stocks,
+        factors["mkt_rf"],
+        factors["rf"]
+    )
 
-    if data.isna().any().any():
-        raise ValueError("Missing values detected.")
+    # Stage 4: MSCI World proxy
+    # MSCI World is a raw return, so subtract RF.
+    world_table, _ = run_capm(
+        stocks,
+        factors["msci_world"] - factors["rf"],
+        factors["rf"]
+    )
 
-    # Both market variables must be excess returns.
-    us_market = data["mkt_rf"]
-    world_market = data["msci_world"] - data["rf"]
+    # Compare regression results.
+    result = pd.DataFrame(index=us_table.index)
 
-    results = []
+    result["alpha_us"] = us_table["alpha"]
+    result["alpha_world"] = world_table["alpha"]
+    result["delta_alpha"] = (
+        result["alpha_world"] - result["alpha_us"]
+    )
 
-    for ticker in TICKERS:
-        stock_excess = data[ticker] - data["rf"]
+    result["beta_us"] = us_table["beta"]
+    result["beta_world"] = world_table["beta"]
+    result["delta_beta"] = (
+        result["beta_world"] - result["beta_us"]
+    )
 
-        us = run_capm(stock_excess, us_market)
-        world = run_capm(stock_excess, world_market)
+    result["alpha_t_us"] = us_table["t_alpha"]
+    result["alpha_t_world"] = world_table["t_alpha"]
 
-        results.append({
-            "ticker": ticker,
-            "alpha_us": us["alpha"],
-            "alpha_world": world["alpha"],
-            "delta_alpha": world["alpha"] - us["alpha"],
-            "beta_us": us["beta"],
-            "beta_world": world["beta"],
-            "delta_beta": world["beta"] - us["beta"],
-            "alpha_t_us": us["alpha_t"],
-            "alpha_t_world": world["alpha_t"],
-            "r2_us": us["r_squared"],
-            "r2_world": world["r_squared"],
-        })
+    result["r2_us"] = us_table["r2"]
+    result["r2_world"] = world_table["r2"]
 
-    result = pd.DataFrame(results)
+    # Save the comparison table.
+    output_path = (
+        TAB_DIR / "stage4_proxy_comparison.csv"
+    )
 
-    output_path = TAB_DIR / "stage4_proxy_comparison.csv"
-    result.to_csv(output_path, index=False)
+    result.round(6).to_csv(output_path)
 
+    # Print summary.
     print("Stage 4 results saved to:", output_path)
-    print(result.round(4).to_string(index=False))
 
     print("\nSummary:")
     print(

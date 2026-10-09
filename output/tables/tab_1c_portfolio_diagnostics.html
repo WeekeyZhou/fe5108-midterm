@@ -1,0 +1,57 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Supporting Table — Portfolio Diagnostics</title><style>
+    body{font-family:Arial,sans-serif;color:#182b3a;margin:24px;max-width:900px}
+    h1{font-size:18px;color:#1f4e79} h2{font-size:14px;margin-top:18px}
+    table{border-collapse:collapse;width:100%;font-size:11px;font-variant-numeric:tabular-nums}
+    th,td{padding:5px 8px;text-align:right;border-bottom:1px solid #e0e5e9}
+    thead th{background:#edf2f6;border-top:2px solid #1f4e79;border-bottom:1px solid #1f4e79}
+    tbody th{text-align:left;font-weight:normal} thead th:first-child{text-align:left}
+    p{font-size:10px;line-height:1.4} tr{break-inside:avoid}
+    @media print{body{margin:0;max-width:none}thead{display:table-header-group}}
+    </style></head><body><h1>Supporting Table — Portfolio Diagnostics</h1><h2>Panel A — Full-sample effect of the no-short constraint</h2><table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unconstrained tangency</th>
+      <th>No-short tangency</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Expected monthly excess return (%)</th>
+      <td>2.93</td>
+      <td>2.13</td>
+    </tr>
+    <tr>
+      <th>Monthly volatility (%)</th>
+      <td>5.34</td>
+      <td>4.82</td>
+    </tr>
+    <tr>
+      <th>Monthly Sharpe ratio</th>
+      <td>0.548</td>
+      <td>0.441</td>
+    </tr>
+    <tr>
+      <th>Gross exposure (%)</th>
+      <td>449.23</td>
+      <td>100.00</td>
+    </tr>
+  </tbody>
+</table><h2>Panel B — Subsample exposure</h2><table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Full sample</th>
+      <th>First half</th>
+      <th>Second half</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Gross exposure (%)</th>
+      <td>449.23</td>
+      <td>555.02</td>
+      <td>1547.22</td>
+    </tr>
+  </tbody>
+</table><p>H1–H2 weight instability: D = Σ|wᵢ,H1 − wᵢ,H2| = 16.5877, equivalent to 1,658.77 aggregate percentage points. This measures aggregate absolute changes in portfolio weights, not a return. Zero means identical allocations.</p><p>Net exposure is 100% for every portfolio within numerical tolerance. Gross exposure is the sum of absolute weights. Sharpe ratios are monthly and unitless. Panel A uses identical full-sample monthly inputs for both portfolios.</p></body></html>

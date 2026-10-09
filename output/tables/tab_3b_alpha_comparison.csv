@@ -1,0 +1,26 @@
+ticker,sector,alpha_capm,alpha_ff3,alpha_capm_ann,alpha_ff3_ann,t_alpha_capm,t_alpha_ff3,capm_significant,ff3_significant,absorbed_by_factors,survives_after_factors,abs_alpha_reduction
+AAPL,Information Technology,0.0108,0.0101,0.1296,0.1208,1.8839,1.8323,False,False,False,False,0.0007
+MSFT,Information Technology,0.0091,0.0069,0.1092,0.083,1.8907,1.6928,False,False,False,False,0.0022
+NVDA,Information Technology,0.0299,0.0294,0.3588,0.3524,2.9268,3.0424,True,True,False,True,0.0005
+JPM,Financials,0.0051,0.005,0.0612,0.0605,1.0846,1.3924,False,False,False,False,0.0001
+BAC,Financials,0.0002,0.0004,0.0024,0.0048,0.0419,0.1049,False,False,False,False,-0.0002
+JNJ,Health Care,0.0034,0.0024,0.0408,0.0286,0.7897,0.5593,False,False,False,False,0.001
+UNH,Health Care,0.005,0.005,0.06,0.0596,0.6853,0.6681,False,False,False,False,0.0
+PFE,Health Care,-0.0036,-0.0048,-0.0432,-0.0581,-0.6208,-0.8273,False,False,False,False,-0.0012
+AMZN,Consumer Discretionary,0.0048,0.0047,0.0576,0.0559,0.7374,0.8421,False,False,False,False,0.0001
+HD,Consumer Discretionary,-0.0005,-0.0001,-0.006,-0.0015,-0.1011,-0.0268,False,False,False,False,0.0004
+MCD,Consumer Discretionary,0.0032,0.0017,0.0384,0.0209,0.7575,0.4244,False,False,False,False,0.0015
+PG,Consumer Staples,0.002,-0.0004,0.024,-0.0051,0.4507,-0.1024,False,False,False,False,0.0016
+KO,Consumer Staples,0.0033,0.0007,0.0396,0.0089,0.8029,0.2032,False,False,False,False,0.0026
+WMT,Consumer Staples,0.0086,0.0071,0.1032,0.0847,1.8246,1.5158,False,False,False,False,0.0015
+XOM,Energy,0.0018,0.0016,0.0216,0.0194,0.2482,0.2754,False,False,False,False,0.0002
+CVX,Energy,0.0012,0.001,0.0144,0.0122,0.1751,0.175,False,False,False,False,0.0002
+CAT,Industrials,0.0104,0.0114,0.1248,0.1369,1.4681,1.6473,False,False,False,False,-0.001
+HON,Industrials,-0.002,-0.003,-0.024,-0.036,-0.4512,-0.6979,False,False,False,False,-0.001
+UNP,Industrials,0.0005,0.0012,0.006,0.0145,0.1066,0.2637,False,False,False,False,-0.0007
+GOOGL,Communication Services,0.0081,0.0072,0.0972,0.0864,1.4331,1.2896,False,False,False,False,0.0009
+VZ,Communication Services,-0.0002,-0.0024,-0.0024,-0.0287,-0.0419,-0.5043,False,False,False,False,-0.0022
+NEE,Utilities,0.0066,0.0061,0.0792,0.0731,1.1709,1.0745,False,False,False,False,0.0005
+DUK,Utilities,0.0033,0.0019,0.0396,0.0231,0.7749,0.4645,False,False,False,False,0.0014
+SHW,Materials,0.0011,0.0016,0.0132,0.0195,0.1979,0.2948,False,False,False,False,-0.0005
+AMT,Real Estate,0.0003,-0.0013,0.0036,-0.0156,0.0476,-0.2244,False,False,False,False,-0.001

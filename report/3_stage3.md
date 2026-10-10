@@ -6,8 +6,7 @@ Stage 2 used the CAPM, where the market excess return was the only systematic ri
 
 $$
 R_{i,t}-R_{f,t}
-=
-\alpha_i
+= \alpha_i
 +\beta_{M,i}(R_{M,t}-R_{f,t})
 +\beta_{SMB,i}SMB_t
 +\beta_{HML,i}HML_t

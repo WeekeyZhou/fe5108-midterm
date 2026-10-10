@@ -186,6 +186,46 @@ def table_2c_image(sig, grs, path):
     _draw_table(rows, ["Test", "Result"], path, col_widths=[0.7, 0.3],
                 bold_rows=(6,), fig_w=5.5, row_h=0.3)
 
+# ---------------------------------------------------------------------------
+# Robustness check
+# ---------------------------------------------------------------------------
+def robustness(stocks, mkt_excess, rf):
+    half = len(stocks) // 2
+    scenarios = {
+        "Baseline (25 stocks, 2016-09 to 2026-07)": (stocks.columns, stocks.index),
+        "Drop NVDA (24 stocks)": ([c for c in stocks.columns if c != "NVDA"], stocks.index),
+        f"First half ({stocks.index[0]} to {stocks.index[half-1]})": (stocks.columns, stocks.index[:half]),
+        f"Second half ({stocks.index[half]} to {stocks.index[-1]})": (stocks.columns, stocks.index[half:]),
+    }
+    rows = []
+    for name, (cols, idx) in scenarios.items():
+        st, m, r = stocks.loc[idx, list(cols)], mkt_excess.loc[idx], rf.loc[idx]
+        tab, res = run_capm(st, m, r)
+        sml = fit_sml(tab, m)
+        sig = count_significant(tab["t_alpha"], len(st))
+        grs = grs_test(tab["alpha"], res, m)
+        rows.append({
+            "scenario": name,
+            "fitted_slope_ann": sml["fitted_slope_ann"],
+            "theory_slope_ann": sml["theory_slope_ann"],
+            "slope_se_ann": sml["fitted_slope_se"] * MONTHS_PER_YEAR,
+            "t_slope_vs_theory": sml["t_slope_vs_theory"],
+            "intercept_ann": sml["fitted_intercept_ann"],
+            "n_sig_alpha": sig["n_sig"],
+            "GRS_p": grs["GRS_p_value"],
+        })
+    return pd.DataFrame(rows).set_index("scenario")
+
+
+def table_2e_image(rob, path):
+    rows = []
+    for name, r in rob.iterrows():
+        rows.append([name, f"{r['fitted_slope_ann']*100:.1f}%", f"{r['theory_slope_ann']*100:.1f}%",
+                     f"{r['t_slope_vs_theory']:.2f}", f"{r['intercept_ann']*100:.1f}%",
+                     f"{int(r['n_sig_alpha'])}", f"{r['GRS_p']:.2f}"])
+    cols = ["Scenario", "Fitted slope", "CAPM slope", "t vs CAPM",
+            "Intercept", "# |t(a)|>2", "GRS p"]
+    _draw_table(rows, cols, path, col_widths=[0.36, 0.11, 0.11, 0.1, 0.1, 0.11, 0.08], fig_w=9, row_h=0.32)
 
 # ---------------------------------------------------------------------------
 # Main
@@ -198,7 +238,7 @@ def main():
     factors = pd.read_csv(FACTORS, index_col="date")
     assert list(stocks.index) == list(factors.index), "Dates do not line up"
 
-    mkt_excess = factors["mkt_rf"]
+    mkt_excess = factors["mkt_rf"]           # already an excess return
     rf = factors["rf"]
 
     # (2a) 25 regressions
@@ -221,6 +261,13 @@ def main():
     sml = fit_sml(table, mkt_excess)
     pd.Series(sml).to_csv(TAB_DIR / "tab_2d_sml.csv", header=["value"])
     plot_sml(table, sml, FIG_DIR / "fig_2b_sml.png")
+
+    # (robustness) NVDA deleted
+    rob = robustness(stocks, mkt_excess, rf)
+    rob.round(4).to_csv(TAB_DIR / "tab_2e_robustness.csv")
+    table_2e_image(rob, FIG_DIR / "tab_2e_robustness.png")
+    print("\nRobustness:")
+    print(rob.round(3).to_string())
 
     # Console summary for the write-up
     print(f"Observations: {n_obs} months, {len(table)} stocks")

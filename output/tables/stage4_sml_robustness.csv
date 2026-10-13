@@ -1,0 +1,5 @@
+proxy,exclude_nvda,n_stocks,fitted_slope_ann,theory_slope_ann,slope_gap_ann,fitted_intercept_ann,t_slope_vs_theory,t_intercept_vs_zero,cs_r2
+US Market,False,25,0.235973,0.130215,0.105758,-0.0314,2.907233,-0.96972,0.646579
+US Market,True,24,0.159359,0.130215,0.029144,0.018839,1.005508,0.777818,0.578783
+MSCI World (URTH),False,25,0.238353,0.110607,0.127746,-0.050337,3.276599,-1.358064,0.619053
+MSCI World (URTH),True,24,0.158011,0.110607,0.047405,0.008333,1.518464,0.296622,0.53799

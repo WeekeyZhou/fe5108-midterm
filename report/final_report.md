@@ -161,13 +161,13 @@ But one effect works against our result. The estimation error in beta usually bi
 
 Because the steep slope is our one apparent rejection of the CAPM, we want to know whether it survives after two reasonable changes. The first one is removing NVIDIA. The second change is splitting the sample into two halves of about five years. Within each half, betas and the CAPM slope are re-estimated from that half only.
 
-![Robustness](output/figures/tab_2e_robustness.png)
-
 For figure 2e, the steep slope does not survive. We can see from the figure, without NVIDIA the fitted slope falls from 23.6% to 15.9%, and closer to the CAPM's 13.0% (t = 1.0). And the two sub-periods point in opposite directions, it is flatter in the first half, and steeper in the second. This changes how we read the evidence.
 
 Firstly, without NVIDIA the fitted slope (15.9%) is no longer significantly different from theory, and no stock has a significant alpha. The conclusion of previous test "the SML is too steep" is therefore driven by one observation.
 
 Secondly, across periods, the slope is unstable. In 2016 to 2021 the fitted line was flatter than the CAPM line (9.4% versus 17.2%) with a high intercept (13.0% per year), which is same as the textbook pattern, and five stocks had significant alphas (GRS p = 0.08, borderline). In 2021 to 2026 it was steeper (16.8% versus 8.9%). With about 60 months per half the estimates are noisy, so neither half is conclusive on its own. The sign flip itself suggest that the slope depends on the period.
+
+![Robustness](output/figures/tab_2e_robustness.png)
 
 ## Conclusion for Stage 2
 

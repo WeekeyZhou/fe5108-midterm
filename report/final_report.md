@@ -101,7 +101,7 @@ The tangency portfolio can be computed successfully, yet its sample implementati
 
 # Stage 2: Does beta explain average returns? Testing the CAPM
 
-**Bottom line.** From September 2016 to July 2026, the claim of CAPM shows that alphas are zero is not rejected. Its claim about the *slope* of the Security Market Line (SML) rejected at first (the fitted line is much steeper than theory) given by the result. But this result relies almost entirely one stock, NVIDIA, and disappears when it is removed. We therefore treat the CAPM as "not convincingly rejected, with one fragile exception".
+From September 2016 to July 2026, the claim of CAPM shows that alphas are zero is not rejected. Its claim about the slope of the Security Market Line (SML) rejected at first (the fitted line is much steeper than theory) given by the result. But this result relies almost entirely one stock, NVIDIA, and disappears when it is removed. We therefore treat the CAPM as "not convincingly rejected, with one fragile exception".
 
 ## 2a. Security characteristic regressions
 

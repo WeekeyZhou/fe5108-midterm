@@ -392,17 +392,6 @@ All five members contributed to the FE5108 Midterm Group Project. Responsibiliti
 
 The members confirm that the descriptions above accurately reflect their contributions to the project.
 
-## Electronic Signatures
-
-| Member | Electronic Signature | Date |
-|---|---|---|
-| A — Zhou Mo | ![](report/Signature1.jpg){height=0.8cm} | 16 October 2026 |
-| B — Yuki Sato | ![](report/Signature5.png){height=0.8cm} | 16 October 2026 |
-| C — Zhang Yin | ![](report/Signature2.png){height=0.8cm} | 16 October 2026 |
-| D — Zhang Jiaxin | ![](report/Signature3.jpg){height=0.8cm} | 16 October 2026 |
-| E — Wu Shuhan | ![](report/Signature4.jpg){height=0.8cm} | 16 October 2026 |
-
-
 ## AI Tools Disclosure
 
 ChatGPT (OpenAI) and Claude (Anthropic) were used for coding assistance and debugging, project planning, editing, and checking the report against the project brief. No AI tool was used as a source of facts or numbers. The group members remain responsible for the accuracy of all calculations, results, and interpretations.

@@ -11,13 +11,3 @@ All five members contributed to the FE5108 Midterm Group Project. Responsibiliti
 | **E — Wu Shuhan** | Stage 4: alternative market-proxy CAPM regressions, SML and NVIDIA robustness checks, investment committee memo, executive summary, appendix, and final report integration. |
 
 The members confirm that the descriptions above accurately reflect their contributions to the project.
-
-## Electronic Signatures
-
-| Member | Electronic Signature | Date |
-|---|---|---|
-| A — Zhou Mo | Zhou Mo | 13 October 2026 |
-| B — Yuki Sato | Yuki Sato | 13 October 2026 |
-| C — Zhang Yin | Zhang Yin | 13 October 2026 |
-| D — Zhang Jiaxin | Zhang Jiaxin | 13 October 2026 |
-| E — Wu Shuhan | Wu Shuhan | 13 October 2026 |

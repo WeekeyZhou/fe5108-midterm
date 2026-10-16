@@ -8,9 +8,6 @@
 
 # Executive Summary
 
-**FE5108 Midterm Group Project**  
-**From the Mutual-Fund Theorem to the Security Market Line: Does the Theory Survive Real Data?**
-
 ## Overall Finding
 
 Our analysis suggests that classical portfolio theory and the Capital Asset Pricing Model (CAPM) remain useful analytical frameworks, but their practical implications depend critically on estimation stability, market-proxy selection, and influential observations. We find no robust evidence against CAPM in our sample, while the estimated unconstrained tangency portfolio exhibits substantial instability.
@@ -63,7 +60,7 @@ The full-sample allocation contains substantial offsetting positions: JPM receiv
 
 The value-weighted comparison illustrates different construction rules rather than determining which strategy is “better.” Value weights reflect company market capitalizations within the 25-stock universe; tangency weights depend on estimated expected excess returns and covariance through Sharpe optimization. A second, related distinction is that estimation error in these inputs can affect tangency allocations, particularly without constraints; capitalization weighting does not optimize these estimated moments. The benchmark uses the October 8, 2026 market-cap snapshot, after the July 2026 return-sample end. It is therefore a snapshot benchmark, not a historically rebalanced value-weighted portfolio. Figure 1 compares allocations, not realized investment performance. Appendix Table A2 provides all five allocation estimates, allowing the selected examples to be checked against the complete results.
 
-![Tangency and value-weighted portfolio weights](output/figures/fig_1b_weights.png)
+![](output/figures/fig_1b_weights.png){width=80%}
 
 **Figure 1. Full-sample tangency and value-weighted snapshot allocations.** Tangency weights use September 2016–July 2026 returns; value weights use October 8, 2026 market capitalizations within the 25-stock universe. **Takeaway: sample Sharpe optimization produces substantial long/short positions that differ markedly from the capitalization-based allocation.** The value-weighted portfolio is a snapshot benchmark, not a historically rebalanced portfolio; the comparison does not establish either allocation’s superiority.
 
@@ -107,13 +104,15 @@ From September 2016 to July 2026, the claim of CAPM shows that alphas are zero i
 
 For each of the 25 stocks we ran, there are total 119 monthly observations,
 
-R<sub>i,t</sub> − R<sub>f,t</sub> = α<sub>i</sub> + β<sub>i</sub> (R<sub>M,t</sub> − R<sub>f,t</sub>) + ε<sub>i,t</sub>,
+$$R_{i,t}-R_{f,t}=\alpha_i+\beta_i\,(R_{M,t}-R_{f,t})+\varepsilon_{i,t},$$
 
-where the market excess return is the Ken French U.S. market factor and R<sub>f</sub> is the one-month T-bill rate of the same month.
+where the market excess return is the Ken French U.S. market factor and $R_f$ is the one-month T-bill rate of the same month.
 
-![Table 2a](output/figures/tab_2a_capm.png)
+![](output/figures/tab_2a_capm.png){width=88%}
 
-For Figure 2a, the Betas run from 0.28 (Duke Energy) to 1.75 (NVIDIA), ordered as theory suggests. For industries like utilities, staples and health care which demands are stable sit below 0.7, while NVIDIA, Bank of America, Amazon and Caterpillar whose demands are changing cyclically sit above 1.2. But only NVIDIA has a significant alpha. Alphas are monthly and annualised.
+**Table 2a. Only NVIDIA has a significant CAPM alpha; betas range from 0.28 to 1.75 and the market explains 28% of a typical stock's variance.** Rows with |t(alpha)| > 2 are highlighted.
+
+In Table 2a, the betas run from 0.28 (Duke Energy) to 1.75 (NVIDIA), ordered as theory suggests. For industries like utilities, staples and health care which demands are stable sit below 0.7, while NVIDIA, Bank of America, Amazon and Caterpillar whose demands are changing cyclically sit above 1.2. But only NVIDIA has a significant alpha. Alphas are monthly and annualised.
 
 The market explains that on average, only 28% of a single stock's variance. The R² ranges from 0.07 for Verizon to 0.55 for Bank of America. The rest is firm-specific risk, which the CAPM says earns no premium.
 
@@ -121,23 +120,29 @@ The market explains that on average, only 28% of a single stock's variance. The 
 
 For each stock we plot its average excess return against its estimated beta. The CAPM line passes through the origin with a slope equal to the average market excess return with 13.0% per year. The fitted line is an ordinary least squares regression of the 25 average excess returns on the 25 betas.
 
-![Empirical SML](output/figures/fig_2b_sml.png)
+![](output/figures/fig_2b_sml.png){width=80%}
 
-For Figure 2b, the fitted SML (orange) is steeper than the CAPM line (grey dashed). This implies that high-beta stocks earned more, and low-beta stocks earn less than their betas justify. NVIDIA pulls the fitted line up strongly to the top right.
+**Figure 2b. The fitted SML is steeper than the CAPM line: high-beta stocks earned more than their betas justify, led by NVIDIA.**
+
+In Figure 2b, the fitted SML (orange) is steeper than the CAPM line (grey dashed). This implies that high-beta stocks earned more, and low-beta stocks earn less than their betas justify. NVIDIA pulls the fitted line up strongly to the top right.
 
 ## 2c. Are all alphas zero?
 
 After testing 25 alphas at the 5% level, we would expect about 25 × 4.8% = 1.2 significant results by chance alone even if the CAPM were exactly true. We found one, which is NVIDIA with t = 2.93. The probability of seeing at least one by chance is 71%, so this count is not unusual.
 
-A joint test is more reliable than counting, because it uses the correlation between residuals of stocks. The Gibbons-Ross-Shanken (GRS) test of "all 25 alphas are zero" gives F(25, 93) = 1.33 with p = 0.167, so we do not reject.
+A joint test is more reliable than counting, because it uses the correlation between residuals of stocks. The Gibbons-Ross-Shanken (GRS; Gibbons, Ross and Shanken, 1989) test of "all 25 alphas are zero" gives F(25, 93) = 1.33 with p = 0.167, so we do not reject.
 
-![Alpha tests](output/figures/tab_2c_alpha_tests.png)
+![](output/figures/tab_2c_alpha_tests.png){width=62%}
 
-For Figure 2c, one significant alpha out of 25 is what luck alone would produce, expected to be 1.2, and the joint GRS test does not reject zero alphas (p = 0.17).
+**Table 2c. The alphas are jointly consistent with zero: one significant alpha is what luck alone would produce, and the GRS test does not reject (p = 0.17).**
+
+In Table 2c, one significant alpha out of 25 is what luck alone would produce, expected to be 1.2, and the joint GRS test does not reject zero alphas (p = 0.17).
 
 But "not rejected" is not "confirmed". With 119 months and 25 assets the test has limited power, and small alphas would go undetected.
 
 ## 2d. Fitted SML versus theory
+
+**Table 2d. The fitted SML slope is significantly steeper than the CAPM prediction, while the intercept is not significantly different from zero.**
 
 | | Intercept (per year) | Slope (per year) |
 |---|---|---|
@@ -147,7 +152,7 @@ But "not rejected" is not "confirmed". With 119 months and 25 assets the test ha
 
 Cross-sectional R² is 0.65.
 
-Normally, the finding in the literature is a line that is too flat with an intercept too high. The low-beta stocks earn more than the CAPM predicts and high-beta stocks earn less. But We find the opposite. The intercept is slightly negative and statistically indistinguishable from zero, and the slope is too steep.
+Normally, the finding in the literature is a line that is too flat with an intercept too high (Black, Jensen and Scholes, 1972). The low-beta stocks earn more than the CAPM predicts and high-beta stocks earn less. But We find the opposite. The intercept is slightly negative and statistically indistinguishable from zero, and the slope is too steep.
 
 There are possible three reasons that may explain why our sample differs:
 
@@ -161,13 +166,17 @@ But one effect works against our result. The estimation error in beta usually bi
 
 Because the steep slope is our one apparent rejection of the CAPM, we want to know whether it survives after two reasonable changes. The first one is removing NVIDIA. The second change is splitting the sample into two halves of about five years. Within each half, betas and the CAPM slope are re-estimated from that half only.
 
-For figure 2e, the steep slope does not survive. We can see from the figure, without NVIDIA the fitted slope falls from 23.6% to 15.9%, and closer to the CAPM's 13.0% (t = 1.0). And the two sub-periods point in opposite directions, it is flatter in the first half, and steeper in the second. This changes how we read the evidence.
+In Table 2e, the steep slope does not survive. We can see from the figure, without NVIDIA the fitted slope falls from 23.6% to 15.9%, and closer to the CAPM's 13.0% (t = 1.0). And the two sub-periods point in opposite directions, it is flatter in the first half, and steeper in the second. This changes how we read the evidence.
 
 Firstly, without NVIDIA the fitted slope (15.9%) is no longer significantly different from theory, and no stock has a significant alpha. The conclusion of previous test "the SML is too steep" is therefore driven by one observation.
 
 Secondly, across periods, the slope is unstable. In 2016 to 2021 the fitted line was flatter than the CAPM line (9.4% versus 17.2%) with a high intercept (13.0% per year), which is same as the textbook pattern, and five stocks had significant alphas (GRS p = 0.08, borderline). In 2021 to 2026 it was steeper (16.8% versus 8.9%). With about 60 months per half the estimates are noisy, so neither half is conclusive on its own. The sign flip itself suggest that the slope depends on the period.
 
-![Robustness](output/figures/tab_2e_robustness.png)
+\needspace{16\baselineskip}
+
+![](output/figures/tab_2e_robustness.png){width=82%}
+
+**Table 2e. The steep SML slope is not robust: it disappears without NVIDIA and reverses sign between the two halves of the sample.**
 
 ## Conclusion for Stage 2
 
@@ -179,7 +188,7 @@ Alphas are jointly consistent with zero, and the apparent failure of the SML slo
 
 ## 3.1 Factor setup
 
-Stage 2 used the CAPM, where the market excess return was the only systematic risk factor. In Stage 3, we add SMB and HML to test whether the CAPM alphas can be explained by size and value effects. The model becomes:
+Stage 2 used the CAPM, where the market excess return was the only systematic risk factor. In Stage 3, we add the SMB and HML factors of Fama and French (1993) to test whether the CAPM alphas can be explained by size and value effects. The model becomes:
 
 $$
 R_{i,t}-R_{f,t}
@@ -202,7 +211,7 @@ The stronger improvement appears in model fit. Average $R^2$ rises from 0.282 un
 
 $R^2$ measures how well the model explains return variation over time, while alpha measures the average return that remains unexplained after controlling for the factors. A model can therefore fit monthly return movements better without removing the intercept. Financial and energy stocks provide a clear example. JPM's $R^2$ rises from 0.498 to 0.712, while its annualised alpha changes only from 6.12% to 6.05%. The same pattern appears for XOM and CVX. Their $R^2$ values increase from 0.175 to 0.454 and from 0.231 to 0.467, while their annualised alphas change only from 2.16% to 1.94% and from 1.44% to 1.22%.
 
-![Figure 3b. CAPM versus Fama-French three-factor alphas](output/figures/fig_3b_alpha_comparison.png)
+![](output/figures/fig_3b_alpha_comparison.png){width=80%}
 
 **Figure 3b.** Adding SMB and HML changes the CAPM alphas only modestly across most stocks, suggesting that size and value factors explain only a limited part of the abnormal returns left by the CAPM. NVDA remains the only statistically significant anomaly.
 
@@ -217,7 +226,7 @@ Overall, Stage 3 shows that SMB and HML improve the explanation of return moveme
 # Stage 4 — Investment Committee Memo
 
 **To:** Investment Committee  
-**From:** FE5108 Research Zhou Mo Team  
+**From:** FE5108 Research Team (Zhou Mo, Yuki Sato, Zhang Yin, Zhang Jiaxin, Wu Shuhan)  
 **Subject:** Portfolio Choice, CAPM Robustness, and Investment Implications  
 **Date:** October 2026
 
@@ -235,7 +244,7 @@ A value-weighted allocation avoids direct dependence on estimated optimal weight
 
 ## 2. Roll's Critique: Market-Proxy and NVIDIA Robustness
 
-Roll's critique emphasizes that the true market portfolio is unobservable, making empirical CAPM tests dependent on imperfect market proxies.
+Roll's critique (Roll, 1977) emphasizes that the true market portfolio is unobservable, making empirical CAPM tests dependent on imperfect market proxies.
 
 We re-estimated CAPM regressions for 25 U.S. stocks over 119 monthly observations using two benchmarks: the Ken French U.S. market excess return and MSCI World, proxied by the iShares MSCI World ETF (URTH). Both specifications use identical stock returns, risk-free rates, and regression methodology.
 
@@ -272,11 +281,25 @@ The investment committee should use a diversified value-weighted allocation as i
 
 Our findings do not robustly reject CAPM, but they demonstrate that empirical asset-pricing conclusions are sensitive to market proxies, influential stocks, and modeling assumptions. The practical lesson is to prioritize diversification, implementation feasibility, and robustness over purely theoretical in-sample optimality.
 
-![Stage 4 SML robustness: excluding NVIDIA narrows slope gaps under both proxies](output/figures/fig_4_sml_proxy_robustness.png)
+![](output/figures/fig_4_sml_proxy_robustness.png){width=92%}
 
 **Figure 4.** Removing NVIDIA substantially narrows the fitted-versus-theoretical SML slope gap under both market proxies. The comparison is descriptive and does not constitute a definitive CAPM test.
 
----
+# References
+
+**Data**
+
+- French, K. R. *Data Library*: Fama/French 3 Factors, monthly. <https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html> (course-provided file, September 2016–July 2026).
+- Yahoo Finance, daily adjusted prices and market capitalizations for the 25 stocks and the iShares MSCI World ETF (URTH), downloaded with the `yfinance` Python package on 8 October 2026.
+
+**Literature**
+
+- Bodie, Z., Kane, A. and Marcus, A. J. *Investments*. McGraw-Hill, Chapters 7–10 and 13.
+- Black, F., Jensen, M. C. and Scholes, M. (1972). The Capital Asset Pricing Model: Some Empirical Tests. In M. C. Jensen (ed.), *Studies in the Theory of Capital Markets*, 79–121. New York: Praeger.
+- Fama, E. F. and French, K. R. (1993). Common Risk Factors in the Returns on Stocks and Bonds. *Journal of Financial Economics*, 33(1), 3–56.
+- Gibbons, M. R., Ross, S. A. and Shanken, J. (1989). A Test of the Efficiency of a Given Portfolio. *Econometrica*, 57(5), 1121–1152.
+- Roll, R. (1977). A Critique of the Asset Pricing Theory's Tests, Part I: On Past and Potential Testability of the Theory. *Journal of Financial Economics*, 4(2), 129–176.
+
 \newpage
 
 # Appendix — Supporting Tables
@@ -361,7 +384,7 @@ All five members contributed to the FE5108 Midterm Group Project. Responsibiliti
 
 | Member | Contribution |
 |---|---|
-| **A — Zhou Mo** | Data collection and cleaning; shared configuration; preparation of reproducible datasets; integration and testing of the complete code pipeline; README documentation. |
+| **A — Zhou Mo** | Project coordination: set up and managed the GitHub repository, assigned tasks and the timeline, and organised group meetings; data collection and cleaning; shared configuration; preparation of reproducible datasets; integration and testing of the complete code pipeline; README documentation. |
 | **B — Yuki Sato** | Stage 1: portfolio summary statistics, tangency and value-weighted allocations, subsample stability analysis, no-short-selling robustness check, and corresponding report section. |
 | **C — Zhang Yin** | Stage 2: CAPM regressions, empirical and theoretical SML comparison, alpha significance and joint testing, robustness analysis, and corresponding report section. |
 | **D — Zhang Jiaxin** | Stage 3: Fama-French three-factor regressions, comparison of CAPM and FF3 alphas, model evaluation, and corresponding report section. |
@@ -371,18 +394,15 @@ The members confirm that the descriptions above accurately reflect their contrib
 
 ## Electronic Signatures
 
-
-## Electronic Signatures
-
 | Member | Electronic Signature | Date |
 |---|---|---|
-| A — Zhou Mo | ![](report/Signature1.jpg){width=2.5cm} | 16 October 2026 |
-| B — Yuki Sato | ![](report/Signature2.png){width=2.5cm} | 16 October 2026 |
-| C — Zhang Yin | ![](report/Signature3.jpg){width=2.5cm} | 16 October 2026 |
-| D — Zhang Jiaxin | ![](report/Signature4.jpg){width=2.5cm} | 16 October 2026 |
-| E — Wu Shuhan | ![](report/Signature5.png){width=2.5cm} | 16 October 2026 |
+| A — Zhou Mo | ![](report/Signature1.jpg){height=0.8cm} | 16 October 2026 |
+| B — Yuki Sato | ![](report/Signature5.png){height=0.8cm} | 16 October 2026 |
+| C — Zhang Yin | ![](report/Signature2.png){height=0.8cm} | 16 October 2026 |
+| D — Zhang Jiaxin | ![](report/Signature3.jpg){height=0.8cm} | 16 October 2026 |
+| E — Wu Shuhan | ![](report/Signature4.jpg){height=0.8cm} | 16 October 2026 |
 
 
 ## AI Tools Disclosure
 
-ChatGPT was used for coding assistance, editing, and research exploration. The group members remain responsible for the accuracy of all calculations, results, and interpretations.
+ChatGPT (OpenAI) and Claude (Anthropic) were used for coding assistance and debugging, project planning, editing, and checking the report against the project brief. No AI tool was used as a source of facts or numbers. The group members remain responsible for the accuracy of all calculations, results, and interpretations.

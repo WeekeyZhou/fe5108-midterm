@@ -278,6 +278,7 @@ Our findings do not robustly reject CAPM, but they demonstrate that empirical as
 **Figure 4.** Removing NVIDIA substantially narrows the fitted-versus-theoretical SML slope gap under both market proxies. The comparison is descriptive and does not constitute a definitive CAPM test.
 
 ---
+\newpage
 
 # Appendix — Supporting Tables
 
@@ -371,13 +372,17 @@ The members confirm that the descriptions above accurately reflect their contrib
 
 ## Electronic Signatures
 
+
+## Electronic Signatures
+
 | Member | Electronic Signature | Date |
 |---|---|---|
-| A — Zhou Mo | Zhou Mo | 13 October 2026 |
-| B — Yuki Sato | Yuki Sato | 13 October 2026 |
-| C — Zhang Yin | Zhang Yin | 13 October 2026 |
-| D — Zhang Jiaxin | Zhang Jiaxin | 13 October 2026 |
-| E — Wu Shuhan | Wu Shuhan | 13 October 2026 |
+| A — Zhou Mo | ![](report/Signature1.jpg){width=2.5cm} | 16 October 2026 |
+| B — Yuki Sato | ![](report/Signature2.png){width=2.5cm} | 16 October 2026 |
+| C — Zhang Yin | ![](report/Signature3.jpg){width=2.5cm} | 16 October 2026 |
+| D — Zhang Jiaxin | ![](report/Signature4.jpg){width=2.5cm} | 16 October 2026 |
+| E — Wu Shuhan | ![](report/Signature5.png){width=2.5cm} | 16 October 2026 |
+
 
 ## AI Tools Disclosure
 
